@@ -7,7 +7,7 @@
 
 ---
 
-## 📋 Descripción
+##  Descripción
 
 Sistema completo de monitoreo y observabilidad para una API REST desarrollada en
 **Python (Flask)**, instrumentada con métricas en formato **Prometheus** y
@@ -15,7 +15,7 @@ visualizada en **Grafana**. Todo el stack se ejecuta con **Docker Compose** y
 viene con un dashboard preconfigurado más un script para generar tráfico
 sintético.
 
-## 🏗️ Arquitectura
+##  Arquitectura
 
 ```
 ┌──────────────┐    scrape    ┌──────────────┐    query    ┌──────────────┐
@@ -31,7 +31,7 @@ sintético.
 └──────────────┘
 ```
 
-## 📁 Estructura del proyecto
+##  Estructura del proyecto
 
 ```
 monitoreo-api/
@@ -55,7 +55,7 @@ monitoreo-api/
     └── generate-traffic.sh
 ```
 
-## 🚀 Cómo ejecutar
+##  Cómo ejecutar
 
 ### Requisitos previos
 - Docker
@@ -80,7 +80,7 @@ docker-compose ps
 docker-compose down -v
 ```
 
-## 🌐 Acceso a los servicios
+##  Acceso a los servicios
 
 | Servicio   | URL                          | Credenciales    |
 |------------|------------------------------|-----------------|
@@ -92,7 +92,7 @@ docker-compose down -v
 > El dashboard **"API Monitoreo - Juan Fernando Bueno"** se carga
 > automáticamente en Grafana gracias al provisioning.
 
-## 🔌 Endpoints de la API
+##  Endpoints de la API
 
 | Método | Endpoint       | Descripción                                       |
 |--------|----------------|---------------------------------------------------|
@@ -102,7 +102,7 @@ docker-compose down -v
 | GET    | `/api/error`   | Falla con 500 el 50% de las veces (para errores)  |
 | GET    | `/metrics`     | Métricas en formato Prometheus                    |
 
-## 📊 Métricas expuestas
+##  Métricas expuestas
 
 | Métrica                          | Tipo      | Descripción                              |
 |----------------------------------|-----------|------------------------------------------|
@@ -112,7 +112,7 @@ docker-compose down -v
 | `app_cpu_percent`                | Gauge     | Uso de CPU del proceso (%)               |
 | `app_memory_mb`                  | Gauge     | Memoria del proceso en MB                |
 
-## 🧪 Generar tráfico sintético
+##  Generar tráfico sintético
 
 ### Opción 1: Python (recomendada)
 
@@ -131,7 +131,7 @@ chmod +x scripts/generate-traffic.sh
 Ambos scripts envían requests aleatorios a los 4 endpoints con distribución
 ponderada y pausas variables para simular tráfico real.
 
-## 🔎 Queries PromQL útiles
+##  Queries PromQL útiles
 
 ```promql
 # Requests por segundo, agrupado por endpoint
@@ -152,14 +152,14 @@ sum(rate(http_requests_total{status=~"5.."}[1m]))
 sum by (endpoint) (http_requests_total)
 ```
 
-## 📈 Paneles del dashboard
+##  Paneles del dashboard
 
 1. **Throughput** — requests por segundo por endpoint
 2. **Latencia** — promedio y percentil 95 por endpoint
 3. **Tasa de errores y requests activos** — 2xx, 5xx y conexiones activas
 4. **Uso del sistema** — memoria y CPU del proceso
 
-## 🛠️ Stack tecnológico
+##  Stack tecnológico
 
 - **Python 3.11** + **Flask 3.0**
 - **prometheus-client** para instrumentación
@@ -168,7 +168,7 @@ sum by (endpoint) (http_requests_total)
 - **Grafana** (última versión oficial)
 - **Docker Compose 3.8**
 
-## 📝 Notas
+##  Notas
 
 - El dashboard usa `refresh: 5s`, así que los datos se actualizan en vivo
   mientras corre el script de tráfico.
@@ -177,6 +177,6 @@ sum by (endpoint) (http_requests_total)
 - El endpoint `/api/lento` introduce un delay aleatorio entre 2 y 3 segundos
   para que el percentil 95 de latencia sea claramente visible.
 
-## 👤 Autor
+##  Autor
 
 Juan Fernando Bueno Torres — Código 202225714601
